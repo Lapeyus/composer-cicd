@@ -19,6 +19,11 @@ steps:
     entrypoint: pip
     args: ["install", "-r", "utils/requirements.txt", "--user"]
 
+  # run in python 3.8 which is latest version in Cloud Composer
+  - name: python:3.8-slim
+    entrypoint: python3.8
+    args: ["-m", "pytest", "-s", "utils/"]
+
   # run
   - name: python
     entrypoint: python
