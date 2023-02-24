@@ -29,3 +29,5 @@ steps:
     args: ["-m", "pytest", "-s", "dags/"]
 
 # [END composer_cicd_unittest_yaml]
+options:
+  logging: CLOUD_LOGGING_ONLY
