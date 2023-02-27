@@ -14,20 +14,6 @@
 
 # [START composer_cicd_dagsync_yaml]
 steps:
-  # install pytest dependencies
-  - name: python:3.8-slim
-    entrypoint: pip
-    args: ["install", "-r", "utils/pytest/requirements.txt", "-c", "utils/pytest/constraints.txt", "--user"]
-
-  - name: python:3.8-slim
-    entrypoint: pip
-    args: ["install", "-r", "utils/pytest/requirements-test.txt", "--user"]
-
-  # run in python 3.8 which is latest version in Cloud Composer
-  - name: python:3.8-slim
-    entrypoint: python3.8
-    args: ["-m", "pytest", "-s", "dags/"]
-
   # install add_dags_to_composer dependencies
   - name: python
     entrypoint: pip

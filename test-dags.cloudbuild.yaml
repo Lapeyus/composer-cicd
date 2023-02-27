@@ -11,11 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# [START composer_cicd_unittest_yaml]
 
-options:
-  logging: CLOUD_LOGGING_ONLY
-  
+# [START composer_cicd_dagsync_yaml]
 steps:
   # install pytest dependencies
   - name: python:3.8-slim
@@ -31,4 +28,16 @@ steps:
     entrypoint: python3.8
     args: ["-m", "pytest", "-s", "dags/"]
 
-# [END composer_cicd_unittest_yaml] 
+  # install add_dags_to_composer dependencies
+  - name: python
+    entrypoint: pip
+    args: ["install", "-r", "utils/dags2bucket/requirements.txt", "--user"]
+
+  # run
+  - name: python
+    entrypoint: python
+    args: ["utils/dags2bucket/add_dags_to_composer.py", "--dags_directory=${_DAGS_DIRECTORY}", "--dags_bucket=${_DAGS_BUCKET}"]
+
+# [END composer_cicd_dagsync_yaml]
+options:
+  logging: CLOUD_LOGGING_ONLY
