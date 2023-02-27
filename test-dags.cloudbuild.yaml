@@ -14,7 +14,7 @@
 # [START composer_cicd_unittest_yaml]
 
 steps:
-  # install dependencies
+  # install pytest dependencies
   - name: python:3.8-slim
     entrypoint: pip
     args: ["install", "-r", "utils/pytest/requirements.txt", "-c", "utils/pytest/constraints.txt", "--user"]
