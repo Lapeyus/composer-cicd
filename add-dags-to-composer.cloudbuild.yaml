@@ -14,6 +14,7 @@
 
 # [START composer_cicd_dagsync_yaml]
 steps:
+
   # install add_dags_to_composer dependencies
   - name: python
     entrypoint: pip
@@ -24,6 +25,6 @@ steps:
     entrypoint: python
     args: ["utils/dags2bucket/add_dags_to_composer.py", "--dags_directory=${_DAGS_DIRECTORY}", "--dags_bucket=${_DAGS_BUCKET}"]
 
-# [END composer_cicd_dagsync_yaml] 
+# [END composer_cicd_dagsync_yaml]
 options:
   logging: CLOUD_LOGGING_ONLY
