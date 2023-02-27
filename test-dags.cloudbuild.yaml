@@ -13,6 +13,9 @@
 # limitations under the License.
 # [START composer_cicd_unittest_yaml]
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+  
 steps:
   # install pytest dependencies
   - name: python:3.8-slim
@@ -29,5 +32,3 @@ steps:
     args: ["-m", "pytest", "-s", "dags/"]
 
 # [END composer_cicd_unittest_yaml] 
-options:
-  logging: CLOUD_LOGGING_ONLY
